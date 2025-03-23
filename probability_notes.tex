@@ -1,0 +1,352 @@
+\documentclass{article}
+\usepackage{sidenotes}
+% \usepackage{libertine}
+
+\usepackage{csquotes}
+
+% TODO: рассказать про функции производящие множества прямо при введении множества исходов
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{tikzducks}
+
+\usepackage{tikz} % картинки в tikz
+\usepackage{microtype} % свешивание пунктуации
+
+\usepackage{array} % для столбцов фиксированной ширины
+
+\usepackage{indentfirst} % отступ в первом параграфе
+
+\usepackage{sectsty} % для центрирования названий частей
+\allsectionsfont{\centering}
+
+\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+
+\usepackage{comment}
+
+\usepackage[left=1.5cm, right=6cm, marginparwidth=4.5cm, bottom=2cm]{geometry}
+
+%\usepackage[top=2cm, left=1.2cm, right=1.2cm, bottom=2cm]{geometry} % размер текста на странице
+
+\usepackage{lastpage} % чтобы узнать номер последней страницы
+
+\usepackage{enumitem} % дополнительные плюшки для списков
+%  например \begin{enumerate}[resume] позволяет продолжить нумерацию в новом списке
+\usepackage{caption}
+
+\usepackage{url} % to use \url{link to web}
+
+%\usepackage{fancyhdr} % весёлые колонтитулы
+%\pagestyle{fancy}
+%\lhead{}
+%\chead{}
+%\rhead{Домашние задания для самураев}
+%\lfoot{}
+%\cfoot{}
+%\rfoot{}
+
+%\renewcommand{\headrulewidth}{0.4pt}
+%\renewcommand{\footrulewidth}{0.4pt}
+
+\usepackage{tcolorbox} % рамочки!
+
+\usepackage{todonotes} % для вставки в документ заметок о том, что осталось сделать
+% \todo{Здесь надо коэффициенты исправить}
+% \missingfigure{Здесь будет Последний день Помпеи}
+% \listoftodos - печатает все поставленные \todo'шки
+
+
+% более красивые таблицы
+\usepackage{booktabs}
+% заповеди из докупентации:
+% 1. Не используйте вертикальные линни
+% 2. Не используйте двойные линии
+% 3. Единицы измерения - в шапку таблицы
+% 4. Не сокращайте .1 вместо 0.1
+% 5. Повторяющееся значение повторяйте, а не говорите "то же"
+
+
+\setcounter{MaxMatrixCols}{20}
+% by crazy default pmatrix supports only 10 cols :)
+
+
+\usepackage{fontspec}
+\usepackage{libertine}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+% \setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+% \newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+\setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
+
+%% эконометрические сокращения
+\DeclareMathOperator{\Cov}{\mathbb{C}ov}
+\DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\row}{row}
+
+\let\P\relax
+\DeclareMathOperator{\P}{\mathbb{P}}
+
+\DeclareMathOperator{\E}{\mathbb{E}}
+% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\card}{card}
+
+\DeclareMathOperator{\Convex}{Convex}
+
+\newcommand \cN{\mathcal{N}}
+\newcommand \dN{\mathcal{N}}
+\newcommand \dBin{\mathrm{Bin}}
+\newcommand \dNBin{\mathrm{NBin}}
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+
+
+
+
+
+
+
+
+
+\usepackage{thmtools} % тонкая настройка окружения теорем
+
+\declaretheorem[
+style=definition, 
+title=Теорема, 
+numberwithin=section, 
+]{theorem}
+
+
+\declaretheorem[
+style=definition, 
+title=Метатеорема, 
+numberwithin=section, 
+]{metatheorem}
+
+
+\declaretheorem[
+style=definition, 
+title=Определение, 
+sibling=theorem, 
+]{definition}
+
+
+
+\title{Caesar Quick start}
+\author{Andy Thomas}
+% \publisher{Bielefeld University}
+
+\begin{document}
+% no page numbering in front matter
+%\frontmatter
+% generate the title page
+% \maketitlepage
+% show the table of contents
+\tableofcontents
+% start to number the pages
+%\mainmatter
+% The first chapter with annotation and citations
+\section{Quick start}
+%
+
+
+При определении функции плотности рассказывать единицы измерения. 
+Длина пойманного удава, случайная величина измеряется в метрах, $dx$ измеряется в метрах. 
+Вероятность — безразмерная, значит плотность должна быть в метрах$^{-1}$.
+
+Бета распределение логично вводить после равномерного на отрезке. 
+
+А второй раз — как отношение гамма-распределений. 
+
+И бета и гамма удобнее сначала ввести в качестве частного случая с помощью техники о-малых. 
+
+
+Метод Ван-Гога! Как правильно отрезать уши на графе?
+
+Задача про камень-ножницы-бумагу. Задача про число шестёрок при парных бросках кубика.
+Что будет раньше?
+
+От аксиом Гершеля-Максвелла легко выйти на нормальность линейной комбинации нормальных!
+Берём и дополняем нужную нам линейнейную комбинацию до ортонормированного базиса! Всё!
+
+
+Давать два определения ковариации! И дисперсии!
+
+\url{https://math.stackexchange.com/questions/2423658/covariance-of-increasing-functions-of-random-variables}
+
+Одно — с парами величин и делением на два!
+
+
+Гибридная функция плотности (название?) для пары дискретная-непрерывная. Тут можно много задач создать!
+\url{https://math.stackexchange.com/questions/887128/find-the-distribution-when-parameter-is-random}
+\url{https://math.stackexchange.com/questions/1622003/joint-cdfs-of-both-continuous-and-discrete-random-variables}
+
+
+
+Мартингал в дискретном времени лучше определять через $\E(M_{t+1} \mid \cF_t)$, а равенство для $\E(M_{t+h} \mid \cF_t)$ лучше доказывать как свойство. 
+Слабым студентам проще понять, что достаточно проверить мартингальное свойство только для шага в единицу времени. 
+
+
+
+
+\begin{definition}[Случайная величина]\label{def:random-variable}\index{случайная величина}
+\textit{Случайная величина} — это функция из множества исходов эксперимента $\Omega$ в множество действительных чисел $\RR$.
+\end{definition}
+
+По европейской традиции случайные величины обычно обозначают с помощью заглавных букв,
+в российской традиции обычно используют греческие буквы.
+
+Если случайная величина моделирует время наступления какого-то события, 
+то с помощью особого значения $+\infty$ описывают сценарий, в котором событие не наступило. 
+В этом случае множеством значений случайной величины может быть $\{1, 2, 3, \dots\} \cup \{\infty\}$.
+    
+
+\begin{theorem}[Критерий независимости]\label{thm:rv-independency}\index{критерей независимости случайных величин}
+Случайные величины $X$ и $Y$ независимы, если и только если события $A = \{X \leq x\}$ и $B = \{Y \leq y\}$
+независимы для любых действительных чисел $x$ и $y$.
+\end{theorem}
+
+\begin{theorem}[Критерий независимости]\label{thm:rv-independency-expectation}\index{критерей независимости случайных величин}
+Случайные величины $X$ и $Y$ независимы, если и только если для любых\sidenote{Для которых левая и правая части формулы определены.} действительных функций $f$ и $g$
+\[
+\E(f(X)\cdot g(Y)) = \E(f(X)) \cdot \E(g(Y)).
+\]
+\end{theorem}
+    
+В частности, из критерия следует, что для независимых случайных величин $X$ и $Y$ верно равенство $\E(XY) = \E(X)\E(Y)$.
+
+
+
+
+\begin{theorem}[Критерий независимости дискретных величин]\label{thm:rv-independency-discrete}\index{критерей независимости случайных величин}
+Дискретные случайные величины $X$ и $Y$ независимы, если и только если события $A = \{X = x\}$ и $B = \{Y = y\}$
+независимы для любых действительных чисел $x$ и $y$.
+\end{theorem}
+
+
+\begin{metatheorem}[О доказательствах про дискретные величины.]\label{mthm:discrete-proofs}\index{метатеорема о доказательствах про дискретные величины}
+Все доказательства утверждений о дискретных случайных величинах доказываются перегруппировкой слагаемых. 
+\end{metatheorem}
+
+
+\begin{definition}\label{def:binomial-distribution}\index{биномиальное распределение}
+Монета\marginnote{Биномиальное распределение, $X \sim \dBin(n, p)$} выпадает решкой с вероятностью $p$ при каждом броске независимо от других бросков. 
+Мы подбрасываем монету $n$ раз. 
+
+Случайная количество выпавших решек $X$ имеет \emph{биномиальное распределение} с параметрами $n$ и $p$.
+\end{definition}
+    
+
+\begin{definition}\label{def:negbinomial-distribution}\index{биномиальное распределение}
+У\marginnote{Отрицательное биномиальное распределение, $X \sim \dNBin(r, p)$} нас есть монета, выпадающая решкой с вероятностью $p$ при каждом броске независимо от других. 
+Мы подбрасываем монету до выпадения $r$ орлов.   
+    
+Случайная количество выпавших решек $X$ имеет \emph{отрицательное биномиальное распределение} с параметрами $r$ и $p$.
+\end{definition}
+    
+
+
+
+
+
+\end{document}
+We compiled a minimal example file to show the basic use of the caesar class, which allows the typesetting of (science) textbooks or theses. The class itself is a reference implementation of the \emph{sidenotes} package. The package provides the additional functionality\sidenote{namely the use of marginal material such as this note or even figures or tables.} and the class gives sensible default values for page margins, chapter formatting and such. The caesar class is derived from the standard \LaTeX-book class and a little bit of experience with the standard class might be very helpful. In this example, biblatex is used for the references.
+
+The first pages of the book (the frontmatter) are not numbered, the numbering starts after the \texttt{mainmatter} macro, which is called after the generation of the title page. The layout has ample margins to allow annotations. A main feature and the package is the sidenote, which is a footnote in the margin and can be placed with the \texttt{sidenote} macro.\sidenote{All information is on the same page, no turning of pages is necessary.} It is very similar to \texttt{footnote} and tries to emulate its behavior. The sidenote moves up or down (floats) to not overlap with other floats in the margin and all the sidenotes are subsequently numbered. 
+
+References can be put in the margin as well.
+%\sidecite[For the ideas behind all this, please see:][ and more work by Tufte.]{Tufte1990,Tufte2006} 
+The macro was named \texttt{sidecite} and is defined with two optional parameters (prefix and postfix) similar to \texttt{cite} taken from the biblatex package. 
+The next two sections describe the different options for the use of figures and tables in a document. We start with a couple of figures.
+% A section with a couple of figures
+\section{Figures}
+%
+\begin{marginfigure}%
+    \includegraphics[width=\marginparwidth]{example-image-a}%
+    \caption{A small rectangle put in the margin.\label{rectangle}}%
+\end{marginfigure}%
+%
+There are three basic options to include figures in a document. The first option is a small figure and its caption in the margin. Figure \ref{rectangle} shows that with a gray rectangle framing the letter \emph{A}. We simply use the \texttt{marginfigure} environment instead of the \texttt{figure} one. 
+
+The next alternative is a figure in the text frame. The figure is placed using the regular \LaTeX-figure environment and its  caption, which is displayed in figure~\ref{rectangle2}. 
+%
+\begin{figure}[htbp]%
+	\includegraphics[height=180pt,width=\textwidth]{example-image-b}%
+	\caption{A larger rectangle in the main area of the text, i.e.\ it does not span into the margin.}%
+	\label{rectangle2}%
+\end{figure}%
+%
+
+In case that a wider figure is needed, the third option spans over the text as well as the margin area. Here, the common \texttt{figure*} environment can be used. The figure options make it easy to choose the appropriate size for a given input file. 
+%
+\begin{figure*}[htbp]
+    \includegraphics[height=180pt,width=400pt]{example-image-c}%
+    \caption{An even larger rectangle. This is the widest figure option. Both, the text as well as the margin width are used for the diagram.}
+    \label{rectangle3}
+\end{figure*}
+%
+
+% Next section with a variety of tables
+\section{Tables}
+The same set of options (small, normal and wide) are also available for tables. The first option is a small table in the margin, this \texttt{margintable} is shown in table \ref{table1}.
+%
+\begin{margintable}%
+	\begin{tabular}{lll}%
+     A&B&C\\%
+     0.50&0.47&0.48\\%
+    \end{tabular}%
+	\vspace{2pt}
+	\caption{A couple of numbers in a table in the margin.\label{table1}}%
+\end{margintable}%
+
+Table \ref{table2} displays a larger table with more numbers. This is done using regular \LaTeX-macros for placing the table along with its caption. 
+%
+\begin{table}[htbp]%
+	 \begin{tabular}{lllllllll}%
+     A&B&C&D&E&F&G&H&I\\%
+    0.50&0.47&0.48&0.50&0.47&0.48&0.60&0.39&1.00\\%
+    \end{tabular}%
+	\vspace{2pt}%
+	\captionsetup{width=\textwidth, justification=justified}%
+	\caption{A couple of numbers in a larger table. This table spans the usual text width.\label{table2}}%
+\end{table}%
+
+The \texttt{table*} environment is also defined in analogy to \texttt{figure*} and is demonstrated in table \ref{table3}.
+%
+\begin{table*}[h!]
+ \begin{tabular}{lllllllllllll}%
+     A&B&C&D&E&F&G&H&I&J&K&L&M\\%
+    0.50&0.47&0.48&0.50&0.47&0.48&0.60&0.39&1.00&0.50&0.47&0.48&0.60\\%
+  \end{tabular}%
+  \vspace{2pt}
+  \caption{Even more numbers in a big table are shown here. This table spans across the full page, text width plus margin.\label{table3}}%
+\end{table*}
+
+%
+\section{More information}
+\marginpar{It is also possible to put a comment in the margin without a corresponding mark in the text with \texttt{marginpar}.} This is a short example file to show the features of the caesar class together with the sidenotes package. Sometimes it is necessary to compile the document up to 3 times in order to get the alignment of all objects correctly.
+%
+% \printbibliography[heading=bibintoc]
+ %
+\end{document}
