@@ -30,7 +30,8 @@
 \usepackage{sectsty} % для центрирования названий частей
 \allsectionsfont{\centering}
 
-\usepackage{amsmath, amsfonts, amssymb} % куча стандартных математических плюшек
+\usepackage{amsmath, amsfonts, amssymb, amsthm} % куча стандартных математических плюшек
+
 
 \usepackage{comment}
 
@@ -97,34 +98,83 @@
 \AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
 \setlist[enumerate, 2]{label=\asbuk*),ref=\asbuk*}
 
+\graphicspath{{./figures}}
+
 %% эконометрические сокращения
+\DeclareMathOperator{\IMR}{IMR} % Inverse Mill's ratio
 \DeclareMathOperator{\Cov}{\mathbb{C}ov}
 \DeclareMathOperator{\Corr}{\mathbb{C}orr}
+\DeclareMathOperator{\sCov}{sCov}
+\DeclareMathOperator{\sCorr}{sCorr}
+\DeclareMathOperator{\sVar}{sVar}
 \DeclareMathOperator{\Var}{\mathbb{V}ar}
+\DeclareMathOperator{\hVar}{\widehat{\Var}}
+\DeclareMathOperator{\hCov}{\widehat{\Cov}}
+\DeclareMathOperator{\hCorr}{\widehat{\Corr}}
 \DeclareMathOperator{\col}{col}
+\DeclareMathOperator{\se}{se}
 \DeclareMathOperator{\row}{row}
+\DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\BestLin}{BestLin}
 
 \let\P\relax
 \DeclareMathOperator{\P}{\mathbb{P}}
 
 \DeclareMathOperator{\E}{\mathbb{E}}
-% \DeclareMathOperator{\tr}{trace}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\tr}{\trace}
+\DeclareMathOperator{\rk}{\rank}
 \DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\mgf}{mgf}
 
 \DeclareMathOperator{\Convex}{Convex}
+\DeclareMathOperator{\plim}{plim}
 
-\newcommand \cN{\mathcal{N}}
-\newcommand \dN{\mathcal{N}}
-\newcommand \dBin{\mathrm{Bin}}
-\newcommand \dNBin{\mathrm{NBin}}
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\scalp}{\langle}{\rangle}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+
+
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cF}{\mathcal{F}}
 
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\NN}{\mathbb{N}}
 
+\newcommand{\dBern}{\mathrm{Bern}}
+\newcommand{\dPois}{\mathrm{Pois}}
+\newcommand{\dBin}{\mathrm{Bin}}
+\newcommand{\dMult}{\mathrm{Mult}}
+\newcommand{\dGeom}{\mathrm{Geom}}
+\newcommand{\dNHGeom}{\mathrm{NHGeom}}
+\newcommand{\dHGeom}{\mathrm{HGeom}}
+\newcommand{\dDUnif}{\mathrm{DUnif}}
+\newcommand{\dFS}{\mathrm{FS}}
+\newcommand{\dNBin}{\mathrm{NBin}}
+
+\newcommand{\dTri}{\mathrm{Triangle}}
+\newcommand{\dUnif}{\mathrm{Unif}}
+\newcommand{\dCauchy}{\mathrm{Cauchy}}
+\newcommand{\dN}{\mathcal{N}}
+\newcommand{\dLN}{\mathcal{LN}}
+\newcommand{\dExpo}{\mathrm{Expo}}
+\newcommand{\dBeta}{\mathrm{Beta}}
+\newcommand{\dGamma}{\mathrm{Gamma}}
+\newcommand{\dWei}{\mathrm{Wei}}
+\newcommand{\dLogistic}{\mathrm{Logistic}}
+\newcommand{\dRayleigh}{\mathrm{Rayleigh}}
+\newcommand{\dPareto}{\mathrm{Pareto}}
 
 
 
 
+\newcommand{\dist}{\text{dist}}
 
 
 
@@ -267,7 +317,67 @@ sibling=theorem,
     
 
 
+\section*{Сходимости случайных величин}
 
+
+\begin{definition}\label{def:convergence-in-distribution}\index{сходимость по распределению}
+Последовательность случайных величин $(R_n)$ сходится\marginnote{$R_n \overset{\dist}{\to} R$} к случайной величине $R$,
+если 
+\[
+\lim \P(R_n \in A) = \P(R \in A)
+\]
+для любого подмножества $A \subset \RR$ с нулевой вероятностью попадания $R$ в его край, $\P(R \in dA) = 0$. 
+\end{definition}
+    
+Классическое определение из типичного учебника немного отличается по формулировке:
+\begin{definition}\label{def:convergence-in-distribution2}\index{сходимость по распределению}
+Рассмотрим последовательность случайных величин $R_n$ с функциями распределения $F_n(x)$ и случайную величину $R$ с функцией распределения $F(x)$.
+Последовательность случайных величин $(R_n)$ сходится\marginnote{$R_n \overset{\dist}{\to} R$} к случайной величине $R$,
+если 
+\[
+\lim F_n(x) = F(x)
+\]
+во всех точках непрерывности функции $F()$.
+\end{definition}
+
+Определения полностью эквивалентны.
+\begin{proof}
+Заметим, что классическое определение получается из первого в виде частного случая. 
+Если рассмотреть множество $A$ вида $A = (-\infty, x]$, то граница $A$ — это просто одна точка, $dA = \{x\}$.
+В этом случае условие $\P(R \in dA) = 0$ превращается в непрерывность функции $F$ в точке $x$.
+
+В обратную сторону доказательство более техническое и следует из того, что любое\marginnote{для которого вероятность $\P(R \in A)$ определена} множество $A$ можно сконструировать 
+из множеств вида $(-\infty, x]$.
+При конструировании можно не обращать внимания на границу, в силу требования $\P(R \in dA) = 0$. 
+Например, 
+\[
+[5; 6] = (-\infty, 6] \ (-\infty, 5] \cup \{5\}. 
+\]
+\end{proof}
+
+
+\section{Пуассоновский поток}
+
+Представим себе Нестареющего Кащея. 
+Он смертен, но исключительно из-за внешних причин, не связанных со своим здоровьем. 
+Скажем, какой-нибудь Иван-Дурак может случайно сломать иглу, спрятанную в яйце. 
+Продолжительность жизни Нестареющего Кащея обозначим величиной $X$.
+Если Нестареющий Кащей проживёт $s$ лет, то это никак не изменит его шансы прожить ещё дополнительно $t$ лет.
+Другими словами, условная вероятность $\P(X > t + s \mid X > s)$ зависит только от $t$ и не зависит от $s$. 
+Можно записать это свойство нестарения Кащея в виде уравнения: 
+\[
+\P(X > t + s \mid X > s) = \P(X > t) \text{ для любых } s, t > 0.
+\]
+В реальности это свойство бывает выполнено примерно. 
+Если лампочка проработает ещё сутки, то её шансы перегореть за следующий час практически не изменятся. 
+Свойство нестарения или медленного старения встречается довольно часто, и для него существует специальный термин. 
+
+\begin{definition}[Экспоненциальное распределение, отсутствие памяти]\label{def:exponential-distribution}\index{экспоненциальное распределение}
+Случайная величина $X$ имеет \emph{экспоненциальное распределение}, если $X$ удовлетворяет \emph{условию отсутствия памяти}
+\[
+ \P(X > t + s \mid X > s) = \P(X > t) \text{ для любых } s, t > 0.
+\]    
+\end{definition}
 
 
 \end{document}
