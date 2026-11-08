@@ -159,6 +159,7 @@ Monty-hall. Утешения для читателя на полях, что П�
 перецуефакаться
 перетумачить
 сызнова
+сарынь на кичку!
 
 Монетки всегда подбрасывают разные реальные исторические пираты со стилизованными портретами.
 
@@ -219,6 +220,12 @@ https://web.hypothes.is/
 Лучший учебник в галактике Млечный путь.
 
 Дороги теории вероятностей.
+
+Новые карты теории вероятностей 
+
+Новые земли теории вероятностей 
+
+
 
 = Обозначения
 
@@ -350,8 +357,10 @@ typst:
 
 = Оформление
 
-Диковинные птицы и цветы. Here be dragons. Средневековые маргиналиии.
+Диковинные птицы и цветы. Here be dragons (Hic sunt dracones). Средневековые маргиналиии.
 Буквицы.
+https://github.com/kevinraymond/florilegium
+https://github.com/AllenJue/kacho
 
 Длинные текстовые доказательства: как их оформлять? Обычно пишут в начале «доказательство» и в конце — квадратик.
 Возможно, узкий растительный орнамент сбоку? с цветными красными цветочками и зелёными листиками? косичка?
@@ -378,9 +387,10 @@ https://e-infinity.space/picture-book/
 И другие вкусности от Kyle Ormsby
 https://e-infinity.space/viz/
 
-Смешные символы конца доказательств, которые изменяются от главы к главе.
+Смешные символы конца доказательств, которые изменяются от главы к главе. Или не меняются?
 
-Унылая версия учебника? Версия для грустных и унылых :) Промпты для гпт для модификации под настроение?
+Унылая версия учебника? Версия для грустных и унылых :) 
+Промпты для гпт для модификации под настроение? - нет. 
 
 Научиться хорошо фотографировать картинки для учебника от руки. Спросить ии как лучше?
 
@@ -425,11 +435,43 @@ https://discrete.openmathbooks.org/dmoi2/sec_comb-proofs.html
 
 Парадокс Эльхалана Мосселя с помощью метода первого шага.
 
+https://www.stat.berkeley.edu/~aldous/150/takis_exercises.pdf
+100 задач про марковские цепи, куча жемчужин!
+Отсылка к теореме Фалеса для симметричного случайного блуждания, картинки деревьев для размножения амёб, ...
+
+
+Somenath Biswas, Various proofs of the Fundamental Theorem of Markov Chains
+https://arxiv.org/pdf/2204.00784
+
+Nicholas J. Rose, On Regular Markov Chains
+короткое доказательство сходимости для матриц 2х2 с помощью разложение матрицы перехода в удобную сумму.
+Трюк: разложение в сумму, $P = I + S$, далее считаем $P^2$, $P^3$ и замечаем простую геометрическую прогрессию в $P^n$.
+
+
+Kate Gingell and Franklin Mendivil, Random walks, directed cycles and Markov chains
+https://www.acadiau.ca/~fmendivi/Papers/RandomWalksDirectedCyclesMarkovChains_WEB.pdf
+Теорема. Множество возможных стационарных распределений для данной структуры графа совпадает с множеством линейных комбинаций (с неотрицательными весами, дающими в сумме единицу) равновероятных распределений на отдельно взятых циклах графа. 
+
+Можно включить половину доказательства на примере? Или целиком обдумать? 
+Увидим, что при $w_c = lambda_c/size(c)$ подходит
+$
+  P_(a->b) = frac(sum_(c in "cycles"(a->b)) w_c , sum_(c in "cycles"(b)) w_c)
+$
+В статье хорошая идея с рассмотрением одной строки матрицы $P$.
+
+
+
+
 
 = Renewal theory, процессы рождения гибели
 
 
 Мотивирует преобразования величин и связь дискретность-непрерывность?
+
+
+https://continuous-time-mcs.quantecon.org/_pdf/book.pdf
+Stachursky, Sargent book!
+
 
 = Преобразования случайных величин =
 
@@ -506,7 +548,29 @@ $G_N(G_X(t)) = G_S(t)$
 $PP(Omega) = 1$ Аксиома бравого солдата Швейка
 «Никогда так не было, чтоб никак не было. Всегда как-нибудь да было.»
 
-Задача о злобном деде Морозе.
+Ввести непрерывность как аксиому вместо сигма-аддитивности? 
+А потом рассказать, что для выполнения непрерывности достаточно сигма-аддитивности?
+Или сначала два желаемых свойства, и сказать сразу что первого достаточно для второго? 
+
+Непрерывность проиллюстрировать:
+задачей о злобном деде Морозе,
+задачей об обезьянах и Гамлете. 
+Оригинал цитаты Эмиля Бореля!
+https://en.wikiquote.org/wiki/%C3%89mile_Borel#Quotes
+
+
+
+Тут мемасик (that's great gatsby but we are waiting for shakespeare)
+
+
+Далее вернуться к задаче с нахождением времени? в мартингальном методе!
+и там же цитата
+don't you understand? the human race IS the endless number of monkeys.
+and every day we produce an endless number of words. and one of us already wrote hamlet. 
+\@LlamaInaTux.
+
+
+
 Задача о телескопической сумме, вероятностная интерпретация. По мотивам видео
 Joseph Newton, A finite game of infite rounds
 https://www.youtube.com/watch?v=LUCvSsx6-EU
@@ -521,10 +585,14 @@ https://www.youtube.com/watch?v=LUCvSsx6-EU
 Найдите вероятность $PP(R = k)$.
 
 Какой вероятностный смысл равенства
-$ 1/(k (k+1)) = 1/k - 1/(k+1)? $
+$ 
+1/(k (k+1)) = 1/k - 1/(k+1)? 
+$
 
 Какой вероятностный смысл у суммы
-$ sum_(k=1)^(oo) 1/(k (k+1)) $
+$ 
+sum_(k=1)^(oo) 1/(k (k+1)) 
+$
 и чему она равна?
 
 Найдите ожидание $EE(R)$.
@@ -606,6 +674,7 @@ Gauge integral вместо лебега?
 
 Картинка с песком на плоскости, разделённым палочками и $EE(Y | calF)$ по вертикали.
 
+Это надо изложить после дайте мне точку опоры!
 
 = Трактовка случайной величины на отрезке $[0, 1]$ как вероятности
 
@@ -678,6 +747,8 @@ from:
 
 Определение! События $A$, $B$, $C$, ..., $D$ независимы в совокупности, если никакое событие из набора, $A in cal(L)$ не зависит ни от какого события $B$, конструируемоего из остальных событий набора, $B in SAlgebra(cal(L) without A)$ !
 Конструировать, мастерить, изготавливать!
+
+SAlgebra или Sigma или Construct?
 
 
 
@@ -948,6 +1019,11 @@ Theory of Probability and Statistics, As Exemplified in Short Dictums
 https://arxiv.org/pdf/2107.02752
 
 
+
+Hamkins, the Book of infinity 
+Куча парадоксов про бесконечность, с картинками! Похоже, нет в электронном виде?
+
+
 = Ссылки для разбора
 
 https://puzzling.stackexchange.com/questions/128409/hopping-frogs-on-an-infinitely-long-row-of-cells
@@ -1048,3 +1124,17 @@ Peredur the son of Evrawk, from the Mabinogion.
 
 https://dostoevskiy-lit.ru/dostoevskiy/pisma-dostoevskogo/dostoevskij-dostoevskomu-8-20-sentyabrya-1863.htm
 
+
+
+Concevons qu’on ait dressé un million de singes à frapper au hasard sur les touches d’une machine à écrire et que, sous la surveillance de contremaîtres illettrés, ces singes dactylographes travaillent avec ardeur dix heures par jour avec un million de machines à écrire de types variés. 
+Les contremaîtres illettrés rassembleraient les feuilles noircies et les relieraient en volumes. 
+Et au bout d’un an, ces volumes se trouveraient renfermer la copie exacte des livres de toute nature et de toutes langues conservés dans les plus riches bibliothèques du monde. 
+Telle est la probabilité pour qu’il se produise pendant un instant très court, dans un espace de quelque étendue, un écart notable de ce que la mécanique statistique considère comme la phénomène le plus probable. 
+
+Émile Borel, "La mécanique statique et l'irréversibilité." J. Phys. Theor. Appl. 3.1 (1913): 189-196.
+https://en.wikiquote.org/wiki/%C3%89mile_Borel#Quotes
+
+
+- But what about my poem?
+- Three monkeys, ten minutes.
+https://web.archive.org/web/20150112153949/http://dilbert.com/strips/comic/1989-05-15
